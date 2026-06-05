@@ -28,20 +28,20 @@ print(result)
 # --------------------------------------------------
 def Solution(matrix , target):
     # Calculating no of rows and colm(size of matrix)
-    row= len(matrix)
-    colm= len(matrix[0])
+    rows= len(matrix)
+    cols= len(matrix[0])
 
     # Boundaries of search
     low= 0 
-    high = row*colm-1 
+    high = rows*cols-1 
 
     # Continue until it became empty
     while low<=high:
         mid= (low+high)//2 
 
         # Finding position in matrix
-        row= mid//colm 
-        col = mid % colm 
+        row= mid//cols 
+        col = mid % cols 
 
         # Compare current element with target and update search boundary
         if matrix[row][col]==target:
