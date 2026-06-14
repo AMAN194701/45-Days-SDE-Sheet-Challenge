@@ -1,0 +1,42 @@
+# --------------------------------------------------
+# Optimal approach (Two Pointer Approach)
+# TC : O(n²)
+# SC : O(1)   
+# --------------------------------------------------
+class Solution:
+    def threeSum(self, nums: list[int]) -> list[list[int]]:
+        nums.sort()
+        result = []
+        n = len(nums)
+
+        # fix 1st element
+        for i in range(n-2):
+            # Skip duplicate first elements
+            if i > 0 and nums[i]==nums[i-1]:
+                continue 
+            left = i+1 
+            right = n - 1
+
+            while left < right :
+                total = nums[i]+ nums[left] + nums[right]
+                # triplet found
+                if total ==0:
+                    result.append([nums[i], nums[left], nums[right]])
+                    left +=1
+                    right-=1 
+
+                    # skip duplicate left and right 
+                    while left < right and nums[left]==nums[left-1]:
+                        left +=1
+                    while left <right and nums[right] == nums[right +1]:
+                        right -=1
+                # need larger sum
+                elif total < 0:
+                    left +=1
+                
+                # need smaller sum
+                else :
+                    right -=1
+        return result 
+
+        
